@@ -1,0 +1,49 @@
+// title: Suspicious Outbound RDP Connections 
+// description: Detects Non-Standard Tools Connecting to TCP port 3389 indicating possible lateral movement
+//
+// reference: https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0708
+//
+// original author: Markus Neis (Swisscom)
+// KQL author: Maarten Goet (condicio)
+//
+// MITRE ATT&CK: lateral_movement, t1210 
+
+Event 
+| parse EventData with 
+  * 'Data Name="RuleName">' RuleName '<' 
+  * 'Data Name="UtcTime">' UtcTime '<' 
+  * 'Data Name="ProcessGuid">' ProcessGuid '<' 
+  * 'Data Name="ProcessId">' ProcessId '<' 
+  * 'Data Name="Image">' Image '<' 
+  * 'Data Name="User">' User '<' 
+  * 'Data Name="Protocol">' Protocol '<' 
+  * 'Data Name="Initiated">' Initiated '<' 
+  * 'Data Name="SourceIsIpv6">' SourceIsIpv6 '<' 
+  * 'Data Name="SourceIp">' SourceIp '<' 
+  * 'Data Name="SourceHostname">' SourceHostname '<' 
+  * 'Data Name="SourcePort">' SourcePort '<' 
+  * 'Data Name="SourcePortName">' SourcePortName '<' 
+  * 'Data Name="DestinationIsIpv6">' DestinationIsIpv6 '<' 
+  * 'Data Name="DestinationIp">' DestinationIp '<' 
+  * 'Data Name="DestinationHostname">' DestinationHostname '<' 
+  * 'Data Name="DestinationPort">' DestinationPort '<' 
+  * 'Data Name="DestinationPortName">' DestinationPortName '<' 
+  *  
+ | where ((EventID == "3" and DestinationPort == "3389") and not 
+   (Image endswith "\\mstsc.exe" 
+ or Image endswith "\\RTSApp.exe" 
+ or Image endswith "\\RTS2App.exe" 
+ or Image endswith "\\RDCMan.exe" 
+ or Image endswith "\\ws_TunnelService.exe" 
+ or Image endswith "\\RSSensor.exe" 
+ or Image endswith "\\RemoteDesktopManagerFree.exe" 
+ or Image endswith "\\RemoteDesktopManager.exe" 
+ or Image endswith "\\RemoteDesktopManager64.exe" 
+ or Image endswith "\\mRemoteNG.exe" 
+ or Image endswith "\\mRemote.exe" 
+ or Image endswith "\\Terminals.exe" 
+ or Image endswith "\\spiceworks-finder.exe" 
+ or Image endswith "\\FSDiscovery.exe" 
+ or Image endswith "\\FSAssessment.exe" 
+ or Image endswith "\\MobaRTE.exe" 
+ or Image endswith "\\chrome.exe"))

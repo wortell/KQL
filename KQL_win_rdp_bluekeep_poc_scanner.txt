@@ -1,0 +1,12 @@
+// title: Scanner PoC for CVE-2019-0708 RDP RCE vuln
+// description: Detects the use of a scanner by zerosum0x0 that discovers targets vulnerable to  CVE-2019-0708 RDP RCE aka BlueKeep
+//
+// references: https://twitter.com/AdamTheAnalyst/status/1134394070045003776 & https://github.com/zerosum0x0/CVE-2019-0708
+//
+// original authors: Florian Roth (sigma rule), Adam Bradbury (idea)
+// KQL author: Maarten Goet (condicio)
+//
+// MITRE ATT&CK: lateral_movement, t1210 
+
+SecurityEvent 
+| where (EventID == "4625" and AccountName == "AAAAAAA")
