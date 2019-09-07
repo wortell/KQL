@@ -4,7 +4,7 @@
 // references: https://twitter.com/AdamTheAnalyst/status/1134394070045003776 & https://github.com/zerosum0x0/CVE-2019-0708
 //
 // original authors: Florian Roth (sigma rule), Adam Bradbury (idea)
-// KQL author: Maarten Goet (condicio)
+// KQL author: Maarten Goet (Wortell)
 //
 // MITRE ATT&CK: lateral_movement, t1210 
 
