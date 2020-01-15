@@ -1,0 +1,3 @@
+// Get all alerts reported by Microsoft Cloud App Security
+SecurityAlert
+| where ProviderName == "MCAS"

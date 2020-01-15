@@ -1,0 +1,3 @@
+// show all newly created users
+AuditLogs
+| where OperationName == "Add user"

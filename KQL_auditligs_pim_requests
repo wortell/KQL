@@ -1,0 +1,6 @@
+// show all PIM requests
+AuditLogs
+| where OperationName == "Add member to role requested (PIM activation)"
+     or OperationName == "Remove member from role completed (PIM deactivate)"
+| extend Account = tostring(InitiatedBy.["user"].["userPrincipalName"])
+| distinct TimeGenerated, Account, ResultDescription

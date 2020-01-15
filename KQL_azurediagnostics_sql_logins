@@ -1,0 +1,5 @@
+// Get all SQL successfull authentications
+AzureDiagnostics
+| where clientIP_s != ""
+| where ResourceProvider == "MICROSOFT.SQL"
+and action_name_s == "DATABASE AUTHENTICATION SUCCEEDED"
