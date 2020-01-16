@@ -1,0 +1,21 @@
+{
+  "analytics": [
+    {
+      "displayName": "Potential CVE-2020-0601 exploitation",
+      "description": "An attacker could have exploited a vulnerability known as CVE-2020-0601 by using a spoofed code-signing certificate to sign a malicious executable, making it appear the file was from a trusted, legitimate source. The user would have no way of knowing the file was malicious, because the digital signature would appear to be from a trusted provider. A successful exploit could have allowed the attacker to conduct man-in-the-middle attacks and decrypt confidential information on user connections to the affected software.",
+      "severity": "Medium",
+      "enabled": true,
+      "query": "Event | where Source == \"Microsoft-Windows-Audit-CVE\" | where EventID == \"1\" | where RenderedDescription contains \"CVE-2020–0601\"",
+      "queryFrequency": "5H",
+      "queryPeriod": "5H",
+      "triggerOperator": "GreaterThan",
+      "triggerThreshold": 0,
+      "suppressionDuration": "6H",
+      "suppressionEnabled": false,
+      "tactics": [
+        "DefenseEvasion",
+        "InitialAccess"
+      ]
+    }
+  ]
+}
