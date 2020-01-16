@@ -1,0 +1,3 @@
+// Get all Exchange related events
+OfficeActivity
+| where OfficeWorkload == "Exchange"

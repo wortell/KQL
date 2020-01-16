@@ -1,0 +1,4 @@
+// Get all login events that are not produced by NT Authority\System
+SecurityEvent
+| where EventID == "4624"
+    and Account <> "NT AUTHORITY\\SYSTEM"

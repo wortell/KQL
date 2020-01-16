@@ -1,0 +1,3 @@
+// Get all alerts reported by Sentinel
+SecurityAlert
+| where ProviderName == "Azure Sentinel"

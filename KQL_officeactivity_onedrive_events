@@ -1,0 +1,4 @@
+// Get all OneDrive related Events
+OfficeActivity
+| where OfficeWorkload == "SharePoint" or OfficeWorkload == "OneDrive"
+| sort by TimeGenerated

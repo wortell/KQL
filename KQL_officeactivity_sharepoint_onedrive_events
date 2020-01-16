@@ -1,0 +1,3 @@
+// Get all SharePoint and OneDrive related events
+OfficeActivity
+| where OfficeWorkload == "SharePoint"

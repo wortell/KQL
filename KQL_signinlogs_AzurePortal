@@ -1,0 +1,4 @@
+// show all successful logins in the Azure portal
+SigninLogs
+| where AppDisplayName == "Azure Portal"
+    and ResultType == 0
